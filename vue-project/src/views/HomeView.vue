@@ -1,32 +1,36 @@
 <template>
   <div class="home">
-    <div v-for="blog in blogs" :key="blog.id">
-      <div class="blog">
-        <h3>{{ blog.title }}</h3>
-        <p>
-          {{ blog.text }}
-        </p>
-      </div>
-    </div>
+    <CardPreview v-for="(card, index) in list" :key="index" :card="card" />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
 import { useStore } from "vuex";
+import CardPreview from "../components/CardPreview.vue";
 export default {
+  data() {
+    return { list: [] };
+  },
+  components: { CardPreview },
   setup() {
-    const blogs = ref([
-      { title: "1", text: "a" },
-      { title: "2", text: "b" },
-      { title: "3", text: "c" },
-    ]);
     const store = useStore();
 
     console.log(store.state.user);
-    return {
-      blogs,
-    };
+  },
+  async created() {
+    try {
+      const response = await fetch(
+        "https://db.ygoprodeck.com/api/v7/cardinfo.php"
+      );
+
+      const { data: list } = await response.json();
+
+      this.list = list;
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>
+
+<style></style>

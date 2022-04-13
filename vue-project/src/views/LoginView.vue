@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" id="form">
     <h3>Login</h3>
 
     <label for="email">Email:</label>
@@ -41,11 +41,7 @@ export default {
 </script>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+#form {
+  font-size: 5rem;
 }
 </style>
