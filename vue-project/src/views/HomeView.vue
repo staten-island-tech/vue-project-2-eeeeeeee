@@ -7,6 +7,7 @@
 <script>
 import { useStore } from "vuex";
 import CardPreview from "../components/CardPreview.vue";
+
 export default {
   data() {
     return { list: [] };
@@ -17,19 +18,19 @@ export default {
 
     console.log(store.state.user);
   },
-  async created() {
-    try {
-      const response = await fetch(
-        "https://db.ygoprodeck.com/api/v7/cardinfo.php"
-      );
+  // async created() {
+  //   try {
+  //     const response = await fetch(
+  //       "https://db.ygoprodeck.com/api/v7/cardinfo.php"
+  //     );
 
-      const { data: list } = await response.json();
+  //     const { data: list } = await response.json();
 
-      this.list = list;
-    } catch (error) {
-      console.log(error);
-    }
-  },
+  //     this.list = list;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // },
 };
 </script>
 
