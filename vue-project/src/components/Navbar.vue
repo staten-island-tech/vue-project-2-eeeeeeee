@@ -1,18 +1,13 @@
 <template>
   <div>
     <div class="nav">
-      <button class="title">
-        <router-link to="/">Yu-Gi-Oh Deck Maker</router-link>
-      </button>
+      <router-link to="/" class="title">Yu-Gi-Oh Deck Maker</router-link>
       <div class="options">
         <div class="nav-link">
           <router-link to="/">Home</router-link>
         </div>
         <div class="nav-link">
           <router-link to="/login">Login</router-link>
-        </div>
-        <div class="nav-link">
-          <router-link to="/signup">Sign Up</router-link>
         </div>
       </div>
     </div>
@@ -25,32 +20,30 @@ export default {};
 
 <style scoped>
 .nav {
-  margin: 1rem;
+  margin: 1rem 0 1rem 0;
   padding: 2.5rem;
-  padding-right: 5%;
-  padding-left: 5%;
   font-size: 2rem;
   letter-spacing: 0.1rem;
-  height: 15rem;
-  align-items: center;
-  background-color: bisque;
+  height: 10rem;
 }
 
 .title {
-  font-size: 6rem;
+  font-size: 4rem;
+  font-weight: bold;
   float: left;
-  max-height: 100%;
+  max-width: 30%;
 }
 
 .options {
+  margin-top: 3.5rem;
   display: flex;
   justify-content: space-between;
-  width: 65%;
+  width: 30%;
   float: right;
 }
 
 .nav-link {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .nav a {
