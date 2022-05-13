@@ -28,10 +28,12 @@ export default {};
 }
 
 .title {
+  color: #2c3e50;
   font-size: 4rem;
   font-weight: bold;
   float: left;
   max-width: 30%;
+  text-decoration: wavy underline overline blink #df534e 0.7rem;
 }
 
 .options {
@@ -46,11 +48,16 @@ export default {};
   font-size: 2.5rem;
 }
 
-.nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.title:hover {
+  color: rgb(245, 237, 121);
 }
-.nav a.router-link-exact-active {
+
+.options a {
+  font-weight: bold;
+  color: #25313d;
+}
+
+.options a.router-link-exact-active {
   color: #42b983;
 }
 </style>
