@@ -4,16 +4,31 @@
       <h3>Login</h3>
 
       <label for="email">Email:</label>
-      <input type="email" name="email" v-model="email" required />
+      <input
+        class="inputs"
+        type="email"
+        name="email"
+        id="email"
+        v-model="email"
+        required
+      />
 
       <label for="password">Password:</label>
-      <input type="password" name="password" v-model="password" required />
+      <input
+        class="inputs"
+        type="password"
+        name="password"
+        id="password"
+        v-model="password"
+        required
+      />
 
-      <button>Login</button>
+      <button class="button">Login</button>
       <div v-if="error">{{ error }}</div>
+
+      <h5>Don't Have An Account?</h5>
+      <router-link to="/signup" class="sign-up">Sign Up</router-link>
     </form>
-    <h5>Don't Have An Account?</h5>
-    <router-link to="/signup" class="sign-up">Sign Up</router-link>
   </div>
 </template>
 
@@ -46,10 +61,28 @@ export default {
 
 <style>
 #form {
-  font-size: 5rem;
+  background-color: #b5b5b5;
+  display: flex;
+  flex-direction: column;
+  font-size: 3.5rem;
+}
+
+.inputs {
+  margin: auto;
+  width: 35%;
+  font-size: 2rem;
 }
 
 .sign-up {
   font-size: 1.5rem;
+}
+
+.button {
+  margin: 2.5rem auto auto auto;
+  font-size: 1.5rem;
+  color: #fe7777;
+  background-color: #1c223c;
+  width: 20%;
+  font-family: Changa, sans-serif;
 }
 </style>

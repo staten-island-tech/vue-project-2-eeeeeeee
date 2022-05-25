@@ -5,8 +5,10 @@ body,
   padding: 0;
   font-size: 62.5%;
   box-sizing: border-box;
+
 }
 body {
+  background-color:#b5b5b5;
 }
 :root {
   /* Define Colors as colors */
@@ -93,7 +95,7 @@ h5 {
   font-size: 3rem;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Changa, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

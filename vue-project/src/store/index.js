@@ -3,21 +3,27 @@ import { auth } from "../config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 const store = createStore({
   state: {
     user: null,
+    authUser: false,
   },
   mutations: {
     setUser(state, payload) {
       state.user = payload;
-      console.log("user state changed:", state.user);
+      console.log("User State Changed:", state.user);
+    },
+    setAuthUser(state, payload) {
+      state.authUser = payload;
     },
   },
   actions: {
     async signup(context, { email, password }) {
-      console.log("signup action");
+      console.log("Signup");
 
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
@@ -27,7 +33,7 @@ const store = createStore({
       }
     },
     async login(context, { email, password }) {
-      console.log("login action");
+      console.log("Login");
 
       const res = await signInWithEmailAndPassword(auth, email, password);
       if (res) {
@@ -36,7 +42,19 @@ const store = createStore({
         throw new Error("Login Error");
       }
     },
+    async logout(context) {
+      console.log("Signout");
+
+      await signOut(auth);
+      context.commit("setUser", null);
+    },
   },
+});
+
+const unsub = onAuthStateChanged(auth, (user) => {
+  store.commit("setAuthUser", true);
+  store.commit("setUser", user);
+  unsub();
 });
 
 export default store;
