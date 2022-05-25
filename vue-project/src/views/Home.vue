@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <template v-if="authUser"
-      ><div v-if="!user" class="not-user">You Don't Get to See This</div>
+<div v-if="!user" class="not-user">You Don't Get to See This</div>
       <div v-if="user" class="user">
         <SkinCard
           v-for="skin in list"
@@ -9,7 +8,7 @@
           :name="skin.displayName"
           :img="skin.displayIcon"
         /></div
-    ></template>
+    >
   </div>
 </template>
 
