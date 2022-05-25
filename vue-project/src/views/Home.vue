@@ -1,20 +1,19 @@
 <template>
   <div class="home">
-    <template v-if="authUser"
-      ><div v-if="!user" class="not-user">You Don't Get to See This</div>
-      <div v-if="user" class="user">
-        <SkinCard
-          v-for="skin in list"
-          :key="skin.uuid"
-          :name="skin.displayName"
-          :img="skin.displayIcon"
-        /></div
-    ></template>
+    <div v-if="!user" class="not-user">You Don't Get to See This</div>
+    <div v-else-if="ready" class="user">
+      <SkinCard
+        v-for="skin in list"
+        :key="skin.uuid"
+        :name="skin.displayName"
+        :img="skin.displayIcon"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import { computed } from "@vue/runtime-core";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import SkinCard from "../components/SkinCard.vue";
 
@@ -27,7 +26,11 @@ export default {
 
     return {
       user: computed(() => store.state.user),
-      authUser: computed(() => store.state.authUser),
+    };
+  },
+  data: () => {
+    return {
+      ready: false,
     };
   },
   async created() {
@@ -37,6 +40,7 @@ export default {
       const { data: list } = await response.json();
 
       this.list = list.filter((skin) => skin.displayIcon != null);
+      this.ready = true;
     } catch (error) {
       console.log(error);
     }
