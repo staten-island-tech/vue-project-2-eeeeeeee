@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSBiGOqXB1u1wCVVNQTzm2kHqzB8cL-UQ",
@@ -18,5 +19,21 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 const auth = getAuth();
+
+const db = getFirestore();
+
+const colRef = collection(db, "users");
+
+getDocs(colRef)
+  .then((snapshot) => {
+    let users = [];
+    snapshot.docs.forEach((user) => {
+      users.push({ ...user.data(), id: user.id });
+    });
+    console.log(users);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 export { auth };

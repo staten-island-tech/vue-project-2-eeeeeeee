@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="handleSubmit" id="form">
+    <form @submit.prevent="handleSubmit" id="form" class="add">
       <h3>Sign up</h3>
 
       <label for="email">Email:</label>
